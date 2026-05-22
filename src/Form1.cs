@@ -6,5 +6,7 @@ namespace _8086_microprocessor_simulator
         {
             InitializeComponent();
         }
+
+
     }
 }
