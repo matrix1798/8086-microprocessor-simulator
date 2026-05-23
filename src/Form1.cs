@@ -223,23 +223,19 @@ namespace _8086_microprocessor_simulator
                 .Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(line => line.Trim())
                 .ToArray();
-
-                instructionExec(program_lines_step_work[curr_line]);
-                refreshAllReg();
-                curr_line++;
             }
-            else
+
+            if (curr_line >= program_lines_step_work.Length)
             {
-                
-                if (curr_line >= program_lines_step_work.Length) { 
                 curr_line = 0;
-                    return;
-                }
-
-                instructionExec(program_lines_step_work[curr_line]);
-                curr_line++;
-                refreshAllReg();
+                return;
             }
+
+            textBox_curr_line.Text = curr_line.ToString();
+
+            instructionExec(program_lines_step_work[curr_line]);
+            refreshAllReg();
+            curr_line++;
         }
     }
 }
